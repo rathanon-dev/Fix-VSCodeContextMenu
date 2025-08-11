@@ -74,7 +74,8 @@ If you want it to show in the modern context menu, you need to manually create a
 
 ---
 ## Demo Videos
-https://github.com/user-attachments/assets/1c383f2a-0baa-4ba5-87fe-0ba5c726d182
+
+https://github.com/user-attachments/assets/3de48ff0-11a4-4990-a76c-501bf85b14ed
 
 ---
 ## License
