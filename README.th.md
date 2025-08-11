@@ -74,8 +74,10 @@ reg query "HKCU\Software\Classes\Drive\shell\VSCode\command" /ve
 
 ---
 ## Demo Videos
-https://github.com/user-attachments/assets/1c383f2a-0baa-4ba5-87fe-0ba5c726d182
+
+ https://github.com/user-attachments/assets/3de48ff0-11a4-4990-a76c-501bf85b14ed
 
 ---
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
