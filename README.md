@@ -1,57 +1,60 @@
 # Fix-VSCodeContextMenu.ps1
 
-สคริปต์ PowerShell สำหรับ **ตรวจสอบและสร้าง Context Menu "Open with Code"** (แบบใน VSCode เวอร์ชัน 1.102.3)  
-รองรับเมนูคลิกขวา 4 แบบ:
-- ไฟล์ (`*`)
-- โฟลเดอร์ (`Directory`)
-- พื้นที่ว่างในโฟลเดอร์ (`Directory\Background`)
-- ไดรฟ์ (`Drive`)
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/rathanon-dev/Fix-VSCodeContextMenu/blob/main/README.md)
+[![TH](https://img.shields.io/badge/lang-th-green.svg)](https://github.com/rathanon-dev/Fix-VSCodeContextMenu/blob/main/README.th.md)
 
-ใช้ในกรณีที่ติดตั้ง VSCode เวอร์ชันใหม่ (เช่น 1.103.0) แล้วเมนูคลิกขวาหายไป
+A PowerShell script to **check and recreate the "Open with Code" context menu** (as in VSCode version 1.102.3).  
+Supports 4 right-click menu locations:
+- Files (`*`)
+- Folders (`Directory`)
+- Empty space in a folder (`Directory\Background`)
+- Drives (`Drive`)
 
----
-
-## คุณสมบัติ
-- ทำงานกับ HKCU (ไม่ต้องใช้สิทธิ์ Admin)
-- ตรวจหาตำแหน่ง `Code.exe` อัตโนมัติใน path มาตรฐาน
-- กรณีไม่พบ VS Code จะแจ้งเตือน
-- ใช้ `reg.exe` เพื่อสร้างและตั้งค่าคีย์ใน Registry
+Use this if installing a newer VSCode version (e.g., 1.103.0) causes the right-click menu to disappear.
 
 ---
 
-## วิธีติดตั้งและใช้งาน
+## Features
+- Works on HKCU (no Admin rights required)
+- Automatically detects the location of `Code.exe` from standard install paths
+- Warns if VS Code is not found
+- Uses `reg.exe` to create and configure Registry keys
 
-### 1. ดาวน์โหลดสคริปต์
-คลิกขวาที่ไฟล์ [`Fix-VSCodeContextMenu.ps1`](Fix-VSCodeContextMenu.ps1) → **Save Link As...**  
-หรือคลิกปุ่ม **Code → Download ZIP** จาก GitHub แล้วแตกไฟล์
+---
 
-### 2. เปิด PowerShell
-กดปุ่ม **Start** → พิมพ์ `PowerShell` → คลิกขวา → **Run as Administrator** *(ไม่จำเป็นใน HKCU แต่แนะนำ)*
+## Installation & Usage
 
-### 3. อนุญาตการรันสคริปต์ชั่วคราว
+### 1. Download the script
+Right-click the [`Fix-VSCodeContextMenu.ps1`](Fix-VSCodeContextMenu.ps1) file → **Save Link As...**  
+Or click **Code → Download ZIP** on GitHub and extract it.
+
+### 2. Open PowerShell
+Press **Start** → type `PowerShell` → right-click → **Run as Administrator** *(not required for HKCU, but recommended)*
+
+### 3. Allow script execution temporarily
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force
 ```
 
-### 4. รันสคริปต์
-กรณีติดตั้ง VS Code แบบปกติ:
+### 4. Run the script
+For a standard VS Code installation:
 ```powershell
 .\Fix-VSCodeContextMenu.ps1
 ```
 
-กรณีติดตั้ง VS Code ในตำแหน่งอื่น:
+For a custom VS Code installation path:
 ```powershell
 .\Fix-VSCodeContextMenu.ps1 -CodePath "D:\Apps\VSCode\Code.exe"
 ```
 
-### 5. รีสตาร์ท Explorer
-สคริปต์จะพยายามรีสตาร์ท Explorer ให้อัตโนมัติ  
-ถ้าไม่สำเร็จ ให้กด `Ctrl+Shift+Esc` → หา `Windows Explorer` → คลิกขวา → Restart
+### 5. Restart Explorer
+The script will try to restart Explorer automatically.
+If it fails, press `Ctrl+Shift+Esc` → find `Windows Explorer` → right-click → Restart.
 
 ---
 
-## การตรวจสอบผลลัพธ์
-รันคำสั่งเหล่านี้ใน PowerShell หรือ Command Prompt:
+## Verify the result
+Run these commands in PowerShell or Command Prompt:
 
 ```cmd
 reg query "HKCU\Software\Classes\*\shell\VSCode\command" /ve
@@ -60,14 +63,14 @@ reg query "HKCU\Software\Classes\Directory\Background\shell\VSCode\command" /ve
 reg query "HKCU\Software\Classes\Drive\shell\VSCode\command" /ve
 ```
 
-ควรเห็น `(Default)` ชี้ไปที่ `"...\Code.exe" "%1"` หรือ `"%V"`
+You should see `(Default)` pointing to `"...\Code.exe" "%1"` or `"%V"`
 
 ---
 
-## หมายเหตุ
-- บน Windows 11 เมนูนี้จะอยู่ใน **"Show more options"** (คลิกขวา → เมนูคลาสสิก)  
-  หากต้องการให้โผล่ในเมนูแบบใหม่ ต้องใช้วิธีสร้าง "Modern context menu" เพิ่ม
-- ถ้าติดตั้ง VS Code ใหม่ เวอร์ชันที่มีบั๊ก อาจต้องรันสคริปต์นี้อีกครั้งหลังติดตั้ง
+## Notes
+- On Windows 11, this menu appears under "Show more options" (right-click → classic context menu).
+If you want it to show in the modern context menu, you need to manually create a "Modern context menu" entry.
+- If you reinstall VS Code with a buggy version, you may need to run this script again after installation.
 
 ---
 ## Demo Videos
