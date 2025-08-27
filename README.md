@@ -1,4 +1,14 @@
 # Fix-VSCodeContextMenu.ps1
+> 🚫 **DEPRECATED**: This repository is no longer necessary.  
+> Since **Visual Studio Code v1.102.3**, the upstream bug with the context menu has been fixed.  
+> 
+> ### Rollback / Uninstall
+> - Run `uninstall.ps1` (or run `.\Fix-VSCodeContextMenu.ps1` without parameters).  
+> - Restart Explorer or sign out/in to refresh the context menus.  
+> 
+> *(If you really need to test the workaround again, run `.\Fix-VSCodeContextMenu.ps1 -Install -RestartExplorer`.  
+> It will create registry keys under `VSCode_Fix`, which can be easily removed and do not conflict with the official keys.)*
+
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/rathanon-dev/Fix-VSCodeContextMenu/blob/main/README.md)
 [![TH](https://img.shields.io/badge/lang-th-green.svg)](https://github.com/rathanon-dev/Fix-VSCodeContextMenu/blob/main/README.th.md)
