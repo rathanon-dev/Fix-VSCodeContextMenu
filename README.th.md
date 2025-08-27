@@ -1,4 +1,12 @@
 # Fix-VSCodeContextMenu.ps1
+> 🚫 **DEPRECATED**: ไม่จำเป็นต้องใช้สคริปต์นี้แล้ว ตั้งแต่ VS Code v1.103.1 ได้แก้ปัญหา context menu แล้ว (fixed upstream).
+>
+> ### Rollback / Uninstall
+> - รัน `uninstall.ps1` (หรือ `.\Fix-VSCodeContextMenu.ps1` โดยไม่ใส่พารามิเตอร์)  
+> - รีสตาร์ท Explorer หรือ Sign out/in
+>
+> *(ถ้าจำเป็นต้องทดสอบการติดตั้งอีก: `.\Fix-VSCodeContextMenu.ps1 -Install -RestartExplorer` ซึ่งจะสร้างคีย์ภายใต้ชื่อ `VSCode_Fix` ที่ลบออกง่าย ไม่ชนของทางการ)*
+>
 
 [![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/rathanon-dev/Fix-VSCodeContextMenu/blob/main/README.md)
 [![TH](https://img.shields.io/badge/lang-th-green.svg)](https://github.com/rathanon-dev/Fix-VSCodeContextMenu/blob/main/README.th.md)
@@ -80,4 +88,5 @@ reg query "HKCU\Software\Classes\Drive\shell\VSCode\command" /ve
 ---
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 
